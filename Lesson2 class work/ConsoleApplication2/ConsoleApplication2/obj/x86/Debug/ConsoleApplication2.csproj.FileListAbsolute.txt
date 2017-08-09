@@ -1,0 +1,6 @@
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.pdb
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication2\ConsoleApplication2\obj\x86\Debug\ConsoleApplication2.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication2\ConsoleApplication2\obj\x86\Debug\ConsoleApplication2.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication2\ConsoleApplication2\obj\x86\Debug\ConsoleApplication2.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication2\ConsoleApplication2\obj\x86\Debug\ConsoleApplication2.pdb

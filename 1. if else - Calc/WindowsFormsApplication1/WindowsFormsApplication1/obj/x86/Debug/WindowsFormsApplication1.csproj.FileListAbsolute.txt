@@ -1,0 +1,16 @@
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog

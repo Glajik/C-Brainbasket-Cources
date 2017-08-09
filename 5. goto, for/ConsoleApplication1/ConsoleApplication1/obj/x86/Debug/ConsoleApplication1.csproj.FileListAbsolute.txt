@@ -1,0 +1,6 @@
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson6 5. goto, for\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson6 5. goto, for\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson6 5. goto, for\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson6 5. goto, for\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson7 5. goto, for\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson7 5. goto, for\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb

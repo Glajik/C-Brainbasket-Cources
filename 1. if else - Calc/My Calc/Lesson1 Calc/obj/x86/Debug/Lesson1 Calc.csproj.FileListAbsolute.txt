@@ -1,0 +1,21 @@
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.pdb
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Form1.resources
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Properties.Resources.resources
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.csproj.GenerateResource.Cache
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\Lesson1 Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Form1.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Properties.Resources.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.csproj.GenerateResource.Cache
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\bin\Debug\Lesson1 Calc.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Form1.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1_Calc.Properties.Resources.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson1 1. if else - Calc\My Calc\Lesson1 Calc\obj\x86\Debug\Lesson1 Calc.csproj.GenerateResource.Cache

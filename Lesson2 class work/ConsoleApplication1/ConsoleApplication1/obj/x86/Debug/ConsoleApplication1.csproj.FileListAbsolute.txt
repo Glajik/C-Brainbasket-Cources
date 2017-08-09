@@ -1,0 +1,10 @@
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+d:\users\oounb-user\documents\visual studio 2010\Projects\Slavik_GL\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+D:\Users\oounb-user\Documents\Visual Studio 2010\Projects\Slavik_GL\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Lesson2 Console\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
