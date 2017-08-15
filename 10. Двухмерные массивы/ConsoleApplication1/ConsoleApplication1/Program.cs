@@ -7,7 +7,7 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        // Вычислить среднее арифметическое матрицы
+        // Обработка матрицы. Задание 10. Вычислить среднее арифметическое матрицы
 
         static void Main(string[] args)
         {
