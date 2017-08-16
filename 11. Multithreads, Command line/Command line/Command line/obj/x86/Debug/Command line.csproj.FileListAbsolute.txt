@@ -1,0 +1,4 @@
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\11. Multithreads, Command line\Command line\Command line\bin\Debug\Command line.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\11. Multithreads, Command line\Command line\Command line\bin\Debug\Command line.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\11. Multithreads, Command line\Command line\Command line\obj\x86\Debug\Command line.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\11. Multithreads, Command line\Command line\Command line\obj\x86\Debug\Command line.pdb
