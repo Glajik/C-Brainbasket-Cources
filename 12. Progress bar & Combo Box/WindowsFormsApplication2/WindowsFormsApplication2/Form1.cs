@@ -16,6 +16,7 @@ namespace WindowsFormsApplication2
             InitializeComponent();
         }
 
+        // Clean TextBox and move cursor there
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
