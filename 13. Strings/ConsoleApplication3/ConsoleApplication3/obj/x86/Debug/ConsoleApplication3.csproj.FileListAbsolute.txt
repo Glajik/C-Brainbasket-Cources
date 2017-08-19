@@ -1,0 +1,4 @@
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\13. Strings\ConsoleApplication3\ConsoleApplication3\bin\Debug\ConsoleApplication3.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\13. Strings\ConsoleApplication3\ConsoleApplication3\bin\Debug\ConsoleApplication3.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\13. Strings\ConsoleApplication3\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\13. Strings\ConsoleApplication3\ConsoleApplication3\obj\x86\Debug\ConsoleApplication3.pdb
