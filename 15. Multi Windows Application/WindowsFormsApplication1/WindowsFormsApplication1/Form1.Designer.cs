@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -312,6 +314,23 @@
             this.timer1.Interval = 1500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Untitled-1.jpg");
+            this.imageList1.Images.SetKeyName(1, "Untitled-2.jpg");
+            this.imageList1.Images.SetKeyName(2, "Untitled-3.jpg");
+            this.imageList1.Images.SetKeyName(3, "Untitled-4.jpg");
+            this.imageList1.Images.SetKeyName(4, "Untitled-5.jpg");
+            this.imageList1.Images.SetKeyName(5, "Untitled-6.jpg");
+            this.imageList1.Images.SetKeyName(6, "Untitled-7.jpg");
+            this.imageList1.Images.SetKeyName(7, "Untitled-8.jpg");
+            this.imageList1.Images.SetKeyName(8, "Untitled-9.jpg");
+            this.imageList1.Images.SetKeyName(9, "Untitled-10.jpg");
+            this.imageList1.Images.SetKeyName(10, "Untitled-11.jpg");
+            this.imageList1.Images.SetKeyName(11, "Untitled-12.jpg");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +400,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
