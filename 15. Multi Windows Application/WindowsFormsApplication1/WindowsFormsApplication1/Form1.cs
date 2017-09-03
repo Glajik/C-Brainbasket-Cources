@@ -12,8 +12,10 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Form CardForm = new Form();
+        Form2 WinDialog = new Form2();
+        Form3 QuitDialog = new Form3();
+        Form4 NamesDialog = new Form4();
 
-        Form4 Btn4 = new Form4();
 
         // Array for image index of randomised cards;
         int[] img_id = new int[24];
@@ -21,7 +23,9 @@ namespace WindowsFormsApplication1
         // value for game logic
         int firstCard = -1, secondCard = -1;
         Button firstButton, secondButton;
-        int monet;
+        int scoreP1 = 0, scoreP2 = 0;
+        int timeP1 = 300, timeP2 = 300;
+        string nameP1 = "Player 1", nameP2 = "Player 2";
 
         public Form1()
         {
@@ -58,17 +62,24 @@ namespace WindowsFormsApplication1
             // Who is first Player
             groupBox1.Enabled = false;
             groupBox2.Enabled = false;
-            int coin = rnd.Next(1);
-            if (coin == 0) groupBox1.Enabled = true;
-            else groupBox2.Enabled = true;
+            if (rnd.Next(1) == 0) groupBox1.Enabled = true;
+                             else groupBox2.Enabled = true;
+
+            // reset scores and time
+            scoreP1 = scoreP2 = 0;
+            timeP1 = timeP2 = 5;
+            nameP1 = "Player 1";
+            nameP2 = "Player 2";
 
             //init Listview
+            listView1.Clear();
             listView1.LargeImageList = imageList2;
+            listView2.Clear();
             listView2.LargeImageList = imageList2;
         }
 
 
-
+        // All game's mechanics is there
         private void timer1_Tick(object sender, EventArgs e)
         {
             CardForm.Hide();
@@ -82,13 +93,11 @@ namespace WindowsFormsApplication1
 
                     if (groupBox1.Enabled)
                     {
-
-                        listView1.Items.Add("", firstCard);
-
+                        listView1.Items.Insert(0, "", firstCard);
                     }
                     else
                     {
-                        listView2.Items.Add("", firstCard);
+                        listView2.Items.Insert(0, "", firstCard);
                     }
                 }
                 
@@ -149,6 +158,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Show first or second card, and fix what and which button pressed
         private void ShowCard(Button this_button, int image_index)
         {
             if (firstCard == -1)
@@ -171,7 +181,10 @@ namespace WindowsFormsApplication1
 
             timer1.Enabled = true;
         }
-        
+
+        //****************************
+        // Processing the game board
+        //**************************** 
         private void button1_Click(object sender, EventArgs e)
         {
             ShowCard(button1, img_id[0]);
@@ -290,6 +303,50 @@ namespace WindowsFormsApplication1
         private void button24_Click(object sender, EventArgs e)
         {
             ShowCard(button24, img_id[23]);
+        }
+
+        // ************************* ^ End of processing game field
+
+        // Exit app from menu
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuitDialog.ShowDialog();
+        }
+
+        // Exit app by click [X]
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //QuitDialog.Show();
+        }
+
+        // Win and loose by time is up
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (groupBox1.Enabled) // Player 1
+            {
+                if (timeP1 <= 0)
+                {
+                    
+                    WinDialog.ShowDialog();
+                }
+                timeP1--;
+            }
+                else // Player 2
+            {
+                if (timeP2 <= 0)
+                {
+                    WinDialog.ShowDialog();
+                }
+                timeP2--;
+            }
+            
+        }
+
+        // Show Player's name dialog
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            NamesDialog.ShowDialog();
+            
         }
 
     }

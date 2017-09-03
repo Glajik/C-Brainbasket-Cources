@@ -11,9 +11,29 @@ namespace WindowsFormsApplication1
 {
     public partial class Form4 : Form
     {
+        Form1 MainForm;
+        Form4 NamesDialog;
+
         public Form4()
         {
             InitializeComponent();
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            NamesDialog.Close();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBox2.Focus();
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) button1.Focus();
+
         }
     }
 }
