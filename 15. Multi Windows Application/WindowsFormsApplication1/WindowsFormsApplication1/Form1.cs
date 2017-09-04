@@ -9,13 +9,22 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    
+    // Interface for access to fields in main form
+    public interface IMainForm
     {
+        void SetNameP1(string s);
+        void SetNameP2(string s);
+    }
+    
+    public partial class Form1 : Form, IMainForm
+    {
+
+
         Form CardForm = new Form();
         Form2 WinDialog = new Form2();
         Form3 QuitDialog = new Form3();
         Form4 NamesDialog = new Form4();
-
 
         // Array for image index of randomised cards;
         int[] img_id = new int[24];
@@ -94,10 +103,14 @@ namespace WindowsFormsApplication1
                     if (groupBox1.Enabled)
                     {
                         listView1.Items.Insert(0, "", firstCard);
+                        scoreP1++;
+                        label2.Text = scoreP1.ToString() + " cards";
                     }
                     else
                     {
                         listView2.Items.Insert(0, "", firstCard);
+                        scoreP2++;
+                        label5.Text = scoreP2.ToString() + "cards";
                     }
                 }
                 
@@ -326,7 +339,6 @@ namespace WindowsFormsApplication1
             {
                 if (timeP1 <= 0)
                 {
-                    
                     WinDialog.ShowDialog();
                 }
                 timeP1--;
@@ -339,6 +351,10 @@ namespace WindowsFormsApplication1
                 }
                 timeP2--;
             }
+
+            // show time
+            label3.Text = timeP1.ToString();
+            label4.Text = timeP2.ToString();
             
         }
 
@@ -346,7 +362,21 @@ namespace WindowsFormsApplication1
         private void Form1_Shown(object sender, EventArgs e)
         {
             NamesDialog.ShowDialog();
+            timer2.Enabled = true;
             
+        }
+
+        // Setters for player's name variable
+        void IMainForm.SetNameP1(string s)
+        {
+            nameP1 = s;
+            groupBox1.Text = nameP1;
+        }
+
+        void IMainForm.SetNameP2(string s)
+        {
+            nameP2 = s;
+            groupBox2.Text = nameP2;
         }
 
     }
