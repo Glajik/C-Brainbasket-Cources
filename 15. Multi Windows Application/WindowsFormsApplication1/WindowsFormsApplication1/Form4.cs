@@ -12,19 +12,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Form4 : Form
     {
-        private readonly IMainForm MainForm; // тут создаем переменную для интерфейса того же типа что и в Form1
 
         public Form4()
         {
             InitializeComponent();
         }
 
-        public Form4(IMainForm mainform)// Тут по идее мы должны получить "значение" интерфейса
-        {
-            InitializeComponent();
-            this.MainForm = mainform;// Get access to interface in Form1 module
-        }
-        
         // Set Players name
         private void button1_Click(object sender, EventArgs e)
         {
