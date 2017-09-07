@@ -11,20 +11,21 @@ namespace WindowsFormsApplication1
 {
     
     // Interface for access to fields in main form
-    public interface IMainForm
+    public interface IPlayerName
     {
-        void SetNameP1(string s);
-        void SetNameP2(string s);
+        string player1_Name { get; set; }
+        string player2_Name { get; set; }
     }
-    
-    public partial class Form1 : Form, IMainForm
+
+    public partial class Form1 : Form, IPlayerName
     {
 
 
         Form CardForm = new Form();
         Form2 WinDialog = new Form2();
         Form3 QuitDialog = new Form3();
-        Form4 NamesDialog = new Form4();
+        Form4 NamesDialog; // we call constructor later
+       
 
         // Array for image index of randomised cards;
         int[] img_id = new int[24];
@@ -34,11 +35,40 @@ namespace WindowsFormsApplication1
         Button firstButton, secondButton;
         int scoreP1 = 0, scoreP2 = 0;
         int timeP1 = 300, timeP2 = 300;
+        // field for interface
         string nameP1 = "Player 1", nameP2 = "Player 2";
+
+        // properties for Interface IPlayerName
+        public string player1_Name
+        {
+            get { return nameP1; }
+            set
+            {
+                nameP1 = value;
+                groupBox1.Text = nameP1;
+            }
+        }
+
+        public string player2_Name
+        {
+            get { return nameP2; }
+            set
+            {
+                nameP2 = value;
+                groupBox2.Text = nameP2;
+            }
+        }
 
         public Form1()
         {
             InitializeComponent();
+            
+            // make new instance of interface class
+            //PlayerName playername = new PlayerName("Player 1 form1", "Player 2 Form1"); 
+            
+            // give link over constructor to Form4
+            NamesDialog = new Form4(this);
+
             
             /*System.Drawing.Image Cards; // = new System.Drawing.Bitmap();
             Cards = System.Drawing.Bitmap.FromFile("img/Untitled-2.jpg");
@@ -76,7 +106,7 @@ namespace WindowsFormsApplication1
 
             // reset scores and time
             scoreP1 = scoreP2 = 0;
-            timeP1 = timeP2 = 5;
+            timeP1 = timeP2 = 3;
             nameP1 = "Player 1";
             nameP2 = "Player 2";
 
@@ -86,12 +116,12 @@ namespace WindowsFormsApplication1
             listView2.Clear();
             listView2.LargeImageList = imageList2;
         }
-
-
+         
+        
         // All game's mechanics is there
         private void timer1_Tick(object sender, EventArgs e)
         {
-            CardForm.Hide();
+            CardForm.Hide(); 
             timer1.Enabled = false;
             if (firstCard != -1 && secondCard != -1)
             {
@@ -329,7 +359,7 @@ namespace WindowsFormsApplication1
         // Exit app by click [X]
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //QuitDialog.Show();
+            if ( e.CloseReason == CloseReason.UserClosing ) QuitDialog.ShowDialog();
         }
 
         // Win and loose by time is up
@@ -340,6 +370,7 @@ namespace WindowsFormsApplication1
                 if (timeP1 <= 0)
                 {
                     WinDialog.ShowDialog();
+                    timer2.Enabled = false;
                 }
                 timeP1--;
             }
@@ -348,6 +379,7 @@ namespace WindowsFormsApplication1
                 if (timeP2 <= 0)
                 {
                     WinDialog.ShowDialog();
+                    timer2.Enabled = false;
                 }
                 timeP2--;
             }
@@ -364,19 +396,6 @@ namespace WindowsFormsApplication1
             NamesDialog.ShowDialog();
             timer2.Enabled = true;
             
-        }
-
-        // Setters for player's name variable
-        void IMainForm.SetNameP1(string s)
-        {
-            nameP1 = s;
-            groupBox1.Text = nameP1;
-        }
-
-        void IMainForm.SetNameP2(string s)
-        {
-            nameP2 = s;
-            groupBox2.Text = nameP2;
         }
 
     }

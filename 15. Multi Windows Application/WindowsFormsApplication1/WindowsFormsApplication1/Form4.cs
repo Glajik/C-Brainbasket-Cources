@@ -12,10 +12,18 @@ namespace WindowsFormsApplication1
 {
     public partial class Form4 : Form
     {
+        IPlayerName playername;
 
         public Form4()
         {
             InitializeComponent();
+        }
+
+        public Form4(IPlayerName p)
+        {
+            InitializeComponent();
+
+            playername = p;
         }
 
         // Set Players name
@@ -23,9 +31,9 @@ namespace WindowsFormsApplication1
         {
             if (textBox1.Text.Length > 1 && textBox2.Text.Length > 1)
             {
-                MainForm.SetNameP1(textBox1.Text);
-                MainForm.SetNameP2(textBox2.Text);
-                Form4.ActiveForm.Close();
+                playername.player1_Name = textBox1.Text;
+                playername.player2_Name = textBox2.Text;
+                Form4.ActiveForm.Hide();
             }
             else
                 MessageBox.Show("One or two fields are blank. Please enter more than one symbol.");
