@@ -10,11 +10,14 @@ using System.Windows.Forms;
 namespace WindowsFormsApplication1
 {
     
-    // Interface for access to fields in main form
+    // Interface for acts with main form
     public interface IPlayerName
     {
         string player1_Name { get; set; }
         string player2_Name { get; set; }
+        string winner_Name { get; set; }
+
+        void StartNewGame();
     }
 
     public partial class Form1 : Form, IPlayerName
@@ -22,9 +25,9 @@ namespace WindowsFormsApplication1
 
 
         Form CardForm = new Form();
-        Form2 WinDialog = new Form2();
         Form3 QuitDialog = new Form3();
         Form4 NamesDialog; // we call constructor later
+        Form2 WinDialog; // .. and there too
        
 
         // Array for image index of randomised cards;
@@ -36,7 +39,9 @@ namespace WindowsFormsApplication1
         int scoreP1 = 0, scoreP2 = 0;
         int timeP1 = 300, timeP2 = 300;
         // field for interface
-        string nameP1 = "Player 1", nameP2 = "Player 2";
+        string nameP1 = "Player 1";
+        string nameP2 = "Player 2";
+        string winner = "noname";
 
         // properties for Interface IPlayerName
         public string player1_Name
@@ -59,6 +64,13 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public string winner_Name
+        {
+            get { return winner; }
+            set { winner = value; }
+        }
+        
+
         public Form1()
         {
             InitializeComponent();
@@ -66,8 +78,10 @@ namespace WindowsFormsApplication1
             // make new instance of interface class
             //PlayerName playername = new PlayerName("Player 1 form1", "Player 2 Form1"); 
             
-            // give link over constructor to Form4
+            // give link over constructor to Form4 and Form2
             NamesDialog = new Form4(this);
+
+            WinDialog = new Form2(this);
 
             
             /*System.Drawing.Image Cards; // = new System.Drawing.Bitmap();
@@ -80,44 +94,55 @@ namespace WindowsFormsApplication1
             CardForm.StartPosition = FormStartPosition.CenterScreen;
             CardForm.BackgroundImageLayout = ImageLayout.Stretch;
 
+            // Starting new game
+            StartNewGame();
+        }
+
+        public void StartNewGame()
+        {
             // Init img_id array
             for (int i = 0; i < 11; i++)
             {
                 img_id[i] = i;
-                img_id[i+12] = i;
+                img_id[i + 12] = i;
             }
 
             // Random cards, 200 times.
             Random rnd = new Random();
             int i1, i2, swap;
-            for (int i = 0; i < 200; i++) {
-                i1 = rnd.Next(0,23);
-                i2 = rnd.Next(0,23);
+            for (int i = 0; i < 200; i++)
+            {
+                i1 = rnd.Next(0, 23);
+                i2 = rnd.Next(0, 23);
                 swap = img_id[i1];
                 img_id[i1] = img_id[i2];
                 img_id[i2] = swap;
             }
-
-            // Who is first Player
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = false;
-            if (rnd.Next(1) == 0) groupBox1.Enabled = true;
-                             else groupBox2.Enabled = true;
 
             // reset scores and time
             scoreP1 = scoreP2 = 0;
             timeP1 = timeP2 = 3;
             nameP1 = "Player 1";
             nameP2 = "Player 2";
+            winner = "noname";
+
+            // Who is first Player
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = false;
+            if (rnd.Next(1) == 0) groupBox1.Enabled = true;
+            else groupBox2.Enabled = true;
 
             //init Listview
             listView1.Clear();
             listView1.LargeImageList = imageList2;
             listView2.Clear();
             listView2.LargeImageList = imageList2;
+            
+            // Show Names dialog
+            if (!NamesDialog.Visible) NamesDialog.ShowDialog();
+
         }
-         
-        
+
         // All game's mechanics is there
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -223,6 +248,82 @@ namespace WindowsFormsApplication1
             this_button.Image = imageList2.Images[image_index];
 
             timer1.Enabled = true;
+        }
+
+        // Win and loose by time is up
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (groupBox1.Enabled) // Player 1
+            {
+                if (timeP1 <= 0)
+                {
+                    timer2.Enabled = false;
+                    WinGame(nameP1);
+                    return;
+                }
+                timeP1--;
+            }
+            else // Player 2
+            {
+                if (timeP2 <= 0)
+                {
+                    timer2.Enabled = false;
+                    WinGame(nameP2);
+                    return;
+                }
+                timeP2--;
+            }
+
+            // show time
+            label3.Text = FormatTime(timeP1);
+            label4.Text = FormatTime(timeP2);
+
+        }
+
+        // function convert seconds to formatted string like "2:58" or "0:03"
+        private String FormatTime(int t)
+        {
+            int m = t / 60;
+            int s = t % 60;
+            String a = m.ToString("0") + ":" + s.ToString("00");
+            return a;
+        }
+
+        private void WinGame(string p)
+        {
+            winner = p;
+
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+            button10.Enabled = false;
+            button11.Enabled = false;
+            button12.Enabled = false;
+            button13.Enabled = false;
+            button14.Enabled = false;
+            button15.Enabled = false;
+            button16.Enabled = false;
+            button17.Enabled = false;
+            button18.Enabled = false;
+            button19.Enabled = false;
+            button20.Enabled = false;
+            button21.Enabled = false;
+            button22.Enabled = false;
+            button23.Enabled = false;
+            button24.Enabled = false;
+
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = true;
+
+            timer1.Enabled = false;
+
+            WinDialog.ShowDialog();
         }
 
         //****************************
@@ -362,33 +463,6 @@ namespace WindowsFormsApplication1
             if ( e.CloseReason == CloseReason.UserClosing ) QuitDialog.ShowDialog();
         }
 
-        // Win and loose by time is up
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            if (groupBox1.Enabled) // Player 1
-            {
-                if (timeP1 <= 0)
-                {
-                    WinDialog.ShowDialog();
-                    timer2.Enabled = false;
-                }
-                timeP1--;
-            }
-                else // Player 2
-            {
-                if (timeP2 <= 0)
-                {
-                    WinDialog.ShowDialog();
-                    timer2.Enabled = false;
-                }
-                timeP2--;
-            }
-
-            // show time
-            label3.Text = timeP1.ToString();
-            label4.Text = timeP2.ToString();
-            
-        }
 
         // Show Player's name dialog
         private void Form1_Shown(object sender, EventArgs e)
@@ -396,6 +470,12 @@ namespace WindowsFormsApplication1
             NamesDialog.ShowDialog();
             timer2.Enabled = true;
             
+        }
+
+        // Start new game from menu
+        private void startNewToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            StartNewGame();
         }
 
     }
