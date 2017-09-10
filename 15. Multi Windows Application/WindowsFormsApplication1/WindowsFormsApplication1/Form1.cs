@@ -26,6 +26,7 @@ namespace WindowsFormsApplication1
 
         Form CardForm = new Form();
         Form3 GameRulesForm = new Form3();
+        Form5 AboutForm = new Form5();
         Form4 NamesDialog; // we call constructor later
         Form2 WinDialog; // .. and there too
        
@@ -606,6 +607,11 @@ namespace WindowsFormsApplication1
         private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GameRulesForm.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm.Show();
         }
 
     }

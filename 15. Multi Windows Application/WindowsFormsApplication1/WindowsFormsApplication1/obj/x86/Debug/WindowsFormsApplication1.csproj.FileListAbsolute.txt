@@ -9,3 +9,4 @@ C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\15. Multi Wi
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\15. Multi Windows Application\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\15. Multi Windows Application\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form2.resources
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\15. Multi Windows Application\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\15. Multi Windows Application\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form5.resources
