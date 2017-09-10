@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1
                     {
                         if (scoreP1 > scoreP2) WinGame(nameP1); //by scores
                         else if (scoreP2 > scoreP1) WinGame(nameP2);
-                        else // if scores is equal - see who spend less time (I think it's imposible for odd number of card)
+                        else // if scores is equal - see who spend less time
                             if (timeP1 > timeP2) WinGame(nameP1);
                             else if (timeP2 > timeP1) WinGame(nameP2);
                             else WinGame("Wow! It's imposible. We have two winners!");
