@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             Random rnd = new Random();
             int count = imageList1.Images.Count;
             int rndimg = rnd.Next(0, count - 1);
-            pictureBox1.Image = imageList1.Images[rndimg];
+            pictureBox1.BackgroundImage = imageList1.Images[rndimg];
 
             // get winners name from main form
             label1.Text = playername.winner_Name + " is winner!";
@@ -39,15 +39,19 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2.ActiveForm.Close();
             Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2.ActiveForm.Close();
+            this.Hide();
             // call procedure in main form
             playername.StartNewGame();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

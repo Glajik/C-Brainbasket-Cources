@@ -118,25 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>Memory has long been a favorite game for all generations. It is easy to play, in fact it is so simple that really young children can play with ease. It requires observation, concentration and a good memory to win. 
+    <value>This is demo project, which grows from simle exersise which show how to works with multiple windows and forms. 
 
-Although the game is designed so two players play against each other it can also be played by a single player. The game is also known as Concentration, Pelmanism, Shinkei-suijaku, Pexeso and Pairs.</value>
-  </data>
-  <data name="textBox2.Text" xml:space="preserve">
-    <value>The first player chooses a card and carefully turns it over. Be sure not to bother the surrounding cards. 
+Thanks to resourse http://www.classicgamesandpuzzles.com/Memory.html, where I get text of rules.
 
-The player then selects another card and turns it over. If the two cards are a matching pair for example two Jacks then they take the two cards and start a stack. The player is awarded another turn for making a match and goes again.
+Thanks to My Wife for love, patience and support.
 
-If the cards are not a match they are turned back over and it is now the next players turn.
-
-The next player chooses their first card and turns it over. If it is a match for one of the cards the previous player turned over then they try to remember where that matching card was and turn it. If they are successful at making a match they place the cards in their stack and choose another card.
-
-If the first card turned over was not a match for one previously turned over the player selects another card in an attempt of making a pair.
-
-If they are unsuccessful in making a match they flip the cards back over and play is passed to the next player.
-
-A players turn is not over until they are unable to make a matching pair.
-
-The game continues in this fashion until all the cards are played.</value>
+(c) Viacheslav Glazhevsky, 2017.</value>
   </data>
 </root>

@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
 
 
         Form CardForm = new Form();
-        Form3 QuitDialog = new Form3();
+        Form3 GameRulesForm = new Form3();
         Form4 NamesDialog; // we call constructor later
         Form2 WinDialog; // .. and there too
        
@@ -83,6 +83,7 @@ namespace WindowsFormsApplication1
 
             WinDialog = new Form2(this);
 
+            CardForm.ShowInTaskbar = false;
             
             /*System.Drawing.Image Cards; // = new System.Drawing.Bitmap();
             Cards = System.Drawing.Bitmap.FromFile("img/Untitled-2.jpg");
@@ -93,15 +94,13 @@ namespace WindowsFormsApplication1
             CardForm.Height = 228+25;
             CardForm.StartPosition = FormStartPosition.CenterScreen;
             CardForm.BackgroundImageLayout = ImageLayout.Stretch;
-
-            // Starting new game
-            StartNewGame();
         }
 
+        // implement method of interface
         public void StartNewGame()
         {
             // Init img_id array
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
                 img_id[i] = i;
                 img_id[i + 12] = i;
@@ -121,7 +120,7 @@ namespace WindowsFormsApplication1
 
             // reset scores and time
             scoreP1 = scoreP2 = 0;
-            timeP1 = timeP2 = 3;
+            timeP1 = timeP2 = 300;
             nameP1 = "Player 1";
             nameP2 = "Player 2";
             winner = "noname";
@@ -138,10 +137,17 @@ namespace WindowsFormsApplication1
             listView2.Clear();
             listView2.LargeImageList = imageList2;
             
+            // Activate game field
+            GameField_HideImages();
+            GameField_Enable(true);
+            GameField_ShowAll();
+
             // Show Names dialog
             if (!NamesDialog.Visible) NamesDialog.ShowDialog();
+            timer2.Enabled = true;
 
         }
+
 
         // All game's mechanics is there
         private void timer1_Tick(object sender, EventArgs e)
@@ -150,104 +156,78 @@ namespace WindowsFormsApplication1
             timer1.Enabled = false;
             if (firstCard != -1 && secondCard != -1)
             {
-                if (firstCard == secondCard)
+                if (firstCard == secondCard) // Player open two equal cards
                 {
                     firstButton.Hide();
                     secondButton.Hide();
-
-                    if (groupBox1.Enabled)
+                    
+                    if (groupBox1.Enabled) // Player 1 
                     {
-                        listView1.Items.Insert(0, "", firstCard);
+                        var li = listView1.Items.Add("", firstCard);
+                        li.Focused = true;
                         scoreP1++;
-                        label2.Text = scoreP1.ToString() + " cards";
+                        label2.Refresh();
                     }
-                    else
+                    else                   // Player 2
                     {
-                        listView2.Items.Insert(0, "", firstCard);
+                        var li = listView2.Items.Add("", firstCard);
+                        li.Focused = true;
                         scoreP2++;
-                        label5.Text = scoreP2.ToString() + "cards";
+                        label5.Refresh();
                     }
+                    if (GameField_NoCards()) // win conditions
+                    {
+                        if (scoreP1 > scoreP2) WinGame(nameP1); //by scores
+                        else if (scoreP2 > scoreP1) WinGame(nameP2);
+                        else // if scores is equal - see who spend less time (I think it's imposible for odd number of card)
+                            if (timeP1 > timeP2) WinGame(nameP1);
+                            else if (timeP2 > timeP1) WinGame(nameP2);
+                            else WinGame("Wow! It's imposible. We have two winners!");
+                    }
+
                 }
-                
+                else // Turn goes to another player
+                {
+                    groupBox1.Enabled = !groupBox1.Enabled;
+                    groupBox2.Enabled = !groupBox2.Enabled;
+                }
+
                 firstCard = secondCard = -1;
 
-                button1.Image = null;
-                button2.Image = null;
-                button3.Image = null;
-                button4.Image = null;
-                button5.Image = null;
-                button6.Image = null;
-                button7.Image = null;
-                button8.Image = null;
-                button9.Image = null;
-                button10.Image = null;
-                button11.Image = null;
-                button12.Image = null;
-                button13.Image = null;
-                button14.Image = null;
-                button15.Image = null;
-                button16.Image = null;
-                button17.Image = null;
-                button18.Image = null;
-                button19.Image = null;
-                button20.Image = null;
-                button21.Image = null;
-                button22.Image = null;
-                button23.Image = null;
-                button24.Image = null;
+                GameField_HideImages();
+                //TestGameField();
 
-                button1.Enabled = true;
-                button2.Enabled = true;
-                button3.Enabled = true;
-                button4.Enabled = true;
-                button5.Enabled = true;
-                button6.Enabled = true;
-                button7.Enabled = true;
-                button8.Enabled = true;
-                button9.Enabled = true;
-                button10.Enabled = true;
-                button11.Enabled = true;
-                button12.Enabled = true;
-                button13.Enabled = true;
-                button14.Enabled = true;
-                button15.Enabled = true;
-                button16.Enabled = true;
-                button17.Enabled = true;
-                button18.Enabled = true;
-                button19.Enabled = true;
-                button20.Enabled = true;
-                button21.Enabled = true;
-                button22.Enabled = true;
-                button23.Enabled = true;
-                button24.Enabled = true;
-
-                groupBox1.Enabled = !groupBox1.Enabled;
-                groupBox2.Enabled = !groupBox2.Enabled;
+                GameField_Enable(true);
+                
             }
         }
 
         // Show first or second card, and fix what and which button pressed
         private void ShowCard(Button this_button, int image_index)
         {
-            if (firstCard == -1)
+            if (!CardForm.Visible)
             {
-                firstCard = image_index;
-                firstButton = this_button;
-                firstButton.Enabled = false;
+
+                if (firstCard == -1)
+                {
+                    firstCard = image_index;
+                    firstButton = this_button;
+                    firstButton.Enabled = false;
+                }
+                else if (secondCard == -1)
+                {
+                    secondCard = image_index;
+                    secondButton = this_button;
+                    secondButton.Enabled = false;
+                }
+
+                CardForm.BackgroundImage = imageList1.Images[image_index];
+                CardForm.Show();
+
+                this_button.Image = imageList2.Images[image_index];
+
+                timer1.Enabled = true;
             }
-            else if (secondCard == -1)
-            {
-                secondCard = image_index;
-                secondButton = this_button;
-                secondButton.Enabled = false;
-            }
-
-            CardForm.BackgroundImage = imageList1.Images[image_index];
-            CardForm.Show();
-
-            this_button.Image = imageList2.Images[image_index];
-
-            timer1.Enabled = true;
         }
 
         // Win and loose by time is up
@@ -293,37 +273,159 @@ namespace WindowsFormsApplication1
         {
             winner = p;
 
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button5.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            button8.Enabled = false;
-            button9.Enabled = false;
-            button10.Enabled = false;
-            button11.Enabled = false;
-            button12.Enabled = false;
-            button13.Enabled = false;
-            button14.Enabled = false;
-            button15.Enabled = false;
-            button16.Enabled = false;
-            button17.Enabled = false;
-            button18.Enabled = false;
-            button19.Enabled = false;
-            button20.Enabled = false;
-            button21.Enabled = false;
-            button22.Enabled = false;
-            button23.Enabled = false;
-            button24.Enabled = false;
+            GameField_Enable(false);
 
             groupBox1.Enabled = true;
             groupBox2.Enabled = true;
 
+            CardForm.Visible = false;
+
             timer1.Enabled = false;
+            timer2.Enabled = false;
 
             WinDialog.ShowDialog();
+        }
+
+        void TestGameField()
+        {
+            button1.Image = imageList2.Images[img_id[0]];
+            button2.Image = imageList2.Images[img_id[1]];
+            button3.Image = imageList2.Images[img_id[2]];
+            button4.Image = imageList2.Images[img_id[3]];
+            button5.Image = imageList2.Images[img_id[4]];
+            button6.Image = imageList2.Images[img_id[5]];
+            button7.Image = imageList2.Images[img_id[6]];
+            button8.Image = imageList2.Images[img_id[7]];
+            button9.Image = imageList2.Images[img_id[8]];
+            button10.Image = imageList2.Images[img_id[9]];
+            button11.Image = imageList2.Images[img_id[10]];
+            button12.Image = imageList2.Images[img_id[11]];
+            button13.Image = imageList2.Images[img_id[12]];
+            button14.Image = imageList2.Images[img_id[13]];
+            button15.Image = imageList2.Images[img_id[14]];
+            button16.Image = imageList2.Images[img_id[15]];
+            button17.Image = imageList2.Images[img_id[16]];
+            button18.Image = imageList2.Images[img_id[17]];
+            button19.Image = imageList2.Images[img_id[18]];
+            button20.Image = imageList2.Images[img_id[19]];
+            button21.Image = imageList2.Images[img_id[20]];
+            button22.Image = imageList2.Images[img_id[21]];
+            button23.Image = imageList2.Images[img_id[22]];
+            button24.Image = imageList2.Images[img_id[23]];
+        }
+        void GameField_HideImages()
+        {
+            button1.Image = null;
+            button2.Image = null;
+            button3.Image = null;
+            button4.Image = null;
+            button5.Image = null;
+            button6.Image = null;
+            button7.Image = null;
+            button8.Image = null;
+            button9.Image = null;
+            button10.Image = null;
+            button11.Image = null;
+            button12.Image = null;
+            button13.Image = null;
+            button14.Image = null;
+            button15.Image = null;
+            button16.Image = null;
+            button17.Image = null;
+            button18.Image = null;
+            button19.Image = null;
+            button20.Image = null;
+            button21.Image = null;
+            button22.Image = null;
+            button23.Image = null;
+            button24.Image = null;
+        }
+
+        void GameField_Enable(bool value)
+        {
+            button1.Enabled = value;
+            button2.Enabled = value;
+            button3.Enabled = value;
+            button4.Enabled = value;
+            button5.Enabled = value;
+            button6.Enabled = value;
+            button7.Enabled = value;
+            button8.Enabled = value;
+            button9.Enabled = value;
+            button10.Enabled = value;
+            button11.Enabled = value;
+            button12.Enabled = value;
+            button13.Enabled = value;
+            button14.Enabled = value;
+            button15.Enabled = value;
+            button16.Enabled = value;
+            button17.Enabled = value;
+            button18.Enabled = value;
+            button19.Enabled = value;
+            button20.Enabled = value;
+            button21.Enabled = value;
+            button22.Enabled = value;
+            button23.Enabled = value;
+            button24.Enabled = value;
+        }
+
+        void GameField_ShowAll()
+        {
+            button1.Visible = true;
+            button2.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
+            button6.Visible = true;
+            button7.Visible = true;
+            button8.Visible = true;
+            button9.Visible = true;
+            button10.Visible = true;
+            button11.Visible = true;
+            button12.Visible = true;
+            button13.Visible = true;
+            button14.Visible = true;
+            button15.Visible = true;
+            button16.Visible = true;
+            button17.Visible = true;
+            button18.Visible = true;
+            button19.Visible = true;
+            button20.Visible = true;
+            button21.Visible = true;
+            button22.Visible = true;
+            button23.Visible = true;
+            button24.Visible = true;
+        }
+
+        // Test Game field if have some card yet.
+        // Return true if it have nothing.
+        bool GameField_NoCards() {
+            bool result = true;
+            if (button1.Visible) result = false;
+            if (button2.Visible) result = false;
+            if (button3.Visible) result = false;
+            if (button4.Visible) result = false;
+            if (button5.Visible) result = false;
+            if (button6.Visible) result = false;
+            if (button7.Visible) result = false;
+            if (button8.Visible) result = false;
+            if (button9.Visible) result = false;
+            if (button10.Visible) result = false;
+            if (button11.Visible) result = false;
+            if (button12.Visible) result = false;
+            if (button13.Visible) result = false;
+            if (button14.Visible) result = false;
+            if (button15.Visible) result = false;
+            if (button16.Visible) result = false;
+            if (button17.Visible) result = false;
+            if (button18.Visible) result = false;
+            if (button19.Visible) result = false;
+            if (button20.Visible) result = false;
+            if (button21.Visible) result = false;
+            if (button22.Visible) result = false;
+            if (button23.Visible) result = false;
+            if (button24.Visible) result = false;
+            return result;
         }
 
         //****************************
@@ -454,28 +556,56 @@ namespace WindowsFormsApplication1
         // Exit app from menu
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            QuitDialog.ShowDialog();
+            var result = MessageBox.Show("Do you want to leave game and close program?", "Confirm the closing", MessageBoxButtons.YesNo);
+            var yes = System.Windows.Forms.DialogResult.Yes;
+            if (result == yes) Application.Exit();
         }
 
-        // Exit app by click [X]
+        // Exit app by click [X]. Show dialog for confirming the closing of the program to avoid accidentally clicking.
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if ( e.CloseReason == CloseReason.UserClosing ) QuitDialog.ShowDialog();
+            if ( e.CloseReason == CloseReason.UserClosing ) 
+            {
+                var result = MessageBox.Show("Do you want to leave game and close program?","Confirm the closing", MessageBoxButtons.YesNo);
+                var no = System.Windows.Forms.DialogResult.No;
+                if (result == no) e.Cancel = true;
+            }
+                    
+            
+            //QuitDialog.ShowDialog();
         }
 
 
-        // Show Player's name dialog
+        // Start new game when program start
         private void Form1_Shown(object sender, EventArgs e)
         {
-            NamesDialog.ShowDialog();
-            timer2.Enabled = true;
-            
+            StartNewGame();
         }
 
         // Start new game from menu
         private void startNewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             StartNewGame();
+        }
+
+        // redraw labels who writes count cards
+        private void label2_Paint(object sender, PaintEventArgs e)
+        {
+            if (scoreP1 == 0) label2.Text = "No cards yet";
+            else if (scoreP1 == 1) label2.Text = scoreP1.ToString() + " card";
+            else label2.Text = scoreP1.ToString() + " cards";    
+        }
+
+        private void label5_Paint(object sender, PaintEventArgs e)
+        {
+            if (scoreP2 == 0) label5.Text = "No cards yet";
+            else if (scoreP2 == 1) label5.Text = scoreP2.ToString() + " card";
+            else label5.Text = scoreP2.ToString() + " cards";
+        }
+
+        private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameRulesForm.Show();
         }
 
     }
