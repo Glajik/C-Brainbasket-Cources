@@ -11,20 +11,42 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+
+
         // private class for plot graphic
 
-        private class MyFunction
+        private class cPlotFunction
         {
+            public struct sWindow // struct for coordinates of space to plot
+            {
+                public int top;
+                public int left;
+                public int width;
+                public int height;
+            }
+            
+            sWindow window;
+
             static int max_points_at_period = 100;
             static int count_periods = 2;
             public double[] plotArray = new double[max_points_at_period * count_periods];
             public System.Drawing.Point[] plotArraySDP = new System.Drawing.Point[max_points_at_period * count_periods];
             public int last_i = max_points_at_period * count_periods - 1;
 
-            public void SinX(double amplitude)
+
+
+            public void SinX(sWindow window)
             {
+                int amplitude = window.height;
+                int x0 = window.top;
+                int y0 = window.left;
+                int x1 = window.width;
+                int y1 = window.height;
+                float y_center = (this.Height - uptab - downtab) / 2 + uptab;  
+
                 for (int i = 0; i <= last_i; i++)
                 {
+            
                     plotArray[i] = amplitude * Math.Sin(2 * Math.PI / max_points_at_period * i);
                     plotArraySDP[i].X = i;
                     plotArraySDP[i].Y = (int)(amplitude * Math.Sin(2 * Math.PI / max_points_at_period * i));
@@ -39,6 +61,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             hwnd = Graphics.FromHwnd(this.Handle);
+
             comboBox1.SelectedIndex = 0;
         }
 
@@ -57,8 +80,8 @@ namespace WindowsFormsApplication1
             10.  Cos (x) * Exp (-x)             
              */
 
-            // init Myfunction
-            MyFunction my_func = new MyFunction();
+            // init class cPlotFunction
+            cPlotFunction PlotFunction = new cPlotFunction();
 
             // Clean window
             hwnd.Clear(this.BackColor);
@@ -71,10 +94,10 @@ namespace WindowsFormsApplication1
             // Caption
             string s = comboBox1.SelectedItem.ToString();
 
-            float uptab = 25;
-            float downtab = 40;
-            float lefttab = 10;
-            float righttab = 10;
+            int uptab = 25;
+            int downtab = 40;
+            int lefttab = 10;
+            int righttab = 10;
             float amplitude = (this.Height - uptab - downtab) / 2;
             float x0 = lefttab;
             float y0 = uptab;//this.Height / 2;
@@ -106,9 +129,15 @@ namespace WindowsFormsApplication1
             int imax = 100, t = 2; // число точек в периоде и число периодов.
             double[] f = new double[imax*t + 10];
 
+            cPlotFunction.sWindow window;
+            window.left = lefttab;
+            window.top = uptab;
+            window.width = this.Width - lefttab - righttab;
+            window.height = this.Height - uptab - downtab;
+
             // Draw selected function
             switch (comboBox1.SelectedItem.ToString()) {
-                case "1. Sin (x)": { my_func.SinX(amplitude); break; }
+                case "1. Sin (x)": { PlotFunction.SinX(window); break; }
                 /*case "2. Cos (x)":
                 case "3. Sin (x) + Sin (2x)":
                 case "4. Sin (x) - Sin (2x)":
@@ -120,7 +149,7 @@ namespace WindowsFormsApplication1
                 case "10.  Cos (x) * Exp (-x)": */
             }
 
-               hwnd.DrawLines(pen_plotter, my_func.plotArraySDP);
+               hwnd.DrawLines(pen_plotter, PlotFunction.plotArraySDP);
         }
 
 
