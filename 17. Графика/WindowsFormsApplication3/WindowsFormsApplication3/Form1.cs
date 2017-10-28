@@ -24,6 +24,10 @@ namespace WindowsFormsApplication3
             hwnd = Graphics.FromHwnd(this.panel1.Handle);
 
             addparam_panel.Enabled = false;
+            pen_panel.Enabled = false;
+            fill_panel.Enabled = false;
+            point_panel.Enabled = false;
+            listView1.Visible = false;
 
             // Fill Comboboxes
 
@@ -62,8 +66,8 @@ namespace WindowsFormsApplication3
             foreach (string item in items)
                 comboBox2.Items.Add(item);
 
-            // FILL METHODS
-            
+            // set default
+            comboBox2.SelectedItem = "Solid";
 
             // FILL STYLES
             /*
@@ -185,31 +189,74 @@ namespace WindowsFormsApplication3
             foreach (string item in items)
                 comboBox4.Items.Add(item.ToString());
 
+            // set default
+            comboBox4.SelectedItem = "Max";
            
+        }
+
+        private void Pen_change(object sender, EventArgs e)
+        {
+            pen.Width = (float)numericUpDown1.Value;
+
+            switch (comboBox2.SelectedItem.ToString())
+            {
+                case "Dash": pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash; break;
+                case "DashDot": pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; break;
+                case "DashDotDot": pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot; break;
+                case "Dot": pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot; break;
+                case "Solid": pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid; break;
+            }
+
+            Render(sender, e);
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog(Form1.ActiveForm);
+            pen.Color = colorDialog1.Color;
+            button1.BackColor = colorDialog1.Color;
+            Render(sender, e);
         }
 
 
         private void Render(object sender, EventArgs e)
         {
-            hwnd.Clear(Color.White);
 
-            switch (comboBox1.SelectedItem.ToString())
+            if (comboBox1.SelectedItem != null)
             {
-                case "DrawArc": MyDrawArc(); break;
-                case "DrawBezier": break;
-                case "DrawClosedCurve": break;
-                case "DrawCurve": break;
-                case "DrawEllipse": break;
-                case "DrawLine": break;
-                case "DrawPie": break;
-                case "DrawRectangle": break;
-                case "DrawString": break;
-                default: break;
+                pen_panel.Enabled = true;
+                
+                hwnd.Clear(Color.White);
+
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "DrawArc": MyDrawArc(); break;
+                    case "DrawBezier": break;
+                    case "DrawClosedCurve": break;
+                    case "DrawCurve": break;
+                    case "DrawEllipse": break;
+                    case "DrawLine": break;
+                    case "DrawPie": break;
+                    case "DrawRectangle": break;
+                    case "DrawString": break;
+
+                    case "FillClosedCurve": MyDrawFillClosedCurve();  break;
+                    case "FillRectange": break;
+                    case "FillEllipse": break;
+                    case "FillPie": break;
+                    case "FillPolygon": break;
+
+                    default: break;
+                }
             }
         }
 
+
         private void MyDrawArc()
         {
+            fill_panel.Enabled = false;
+
             // Configure additional parameter window, and show it
             if (!addparam_panel.Enabled)
             {
@@ -245,25 +292,29 @@ namespace WindowsFormsApplication3
             }
 
             //setup initial parameter
-            pen.Width = (float)numericUpDown1.Value;
             int x = (int)numericUpDown_x.Value;
             int y = (int)numericUpDown_y.Value;
             int width = (int)numericUpDown_width.Value;
             int height = (int)numericUpDown_height.Value;
             float startAngle = (float)numericUpDown_param1.Value;
             float sweepAngle = (float)numericUpDown_param2.Value;
-
-            // Draw figure
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+            
+            // Draw figure
             hwnd.DrawArc(pen, rect, startAngle, sweepAngle);
 
         }
 
-
-        private void button3_Click(object sender, EventArgs e)
+        private void MyDrawFillClosedCurve()
         {
-
+            fill_panel.Enabled = true;
         }
+
+
+
+
+
+
 
 
     }
