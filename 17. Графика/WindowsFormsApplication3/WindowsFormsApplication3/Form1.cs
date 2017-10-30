@@ -13,8 +13,11 @@ namespace WindowsFormsApplication3
     {
         Graphics hwnd;
         Pen pen = new Pen(Color.Black);
-        Brush brush = Brushes.Blue;
-        
+        System.Drawing.SolidBrush solidbrush = new SolidBrush(Color.Black);
+       
+        System.Drawing.Drawing2D.HatchBrush hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, Color.Black, Color.White);
+        Color hatchbrush_forecolor = Color.Black;
+       
 
         public Form1()
         {
@@ -29,7 +32,11 @@ namespace WindowsFormsApplication3
             point_panel.Enabled = false;
             listView1.Visible = false;
 
+            // fill List View with new random values
+            FillListView();
+
             // Fill Comboboxes
+
 
             // FIGURES
             /*
@@ -129,7 +136,8 @@ namespace WindowsFormsApplication3
             System.Drawing.Drawing2D.HatchStyle.ZigZag;
             */
 
-            items = new string[] {"BackwardDiagonal", 
+            items = new string[] { "Solid Brush",
+            "BackwardDiagonal", 
             "Cross", 
             "DarkDownwardDiagonal", 
             "DarkHorizontal", 
@@ -190,7 +198,7 @@ namespace WindowsFormsApplication3
                 comboBox4.Items.Add(item.ToString());
 
             // set default
-            comboBox4.SelectedItem = "Max";
+            comboBox4.SelectedItem = "ZigZag";
            
         }
 
@@ -210,7 +218,73 @@ namespace WindowsFormsApplication3
             Render(sender, e);
         }
 
+        private void Fill_change(object sender, EventArgs e)
+        {
+            switch (comboBox4.SelectedItem.ToString())
+            {
+                case "Solid Brush": hatchbrush = null; break;
+                case "BackwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "Cross": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Cross, hatchbrush_forecolor, Color.White); break;
+                case "DarkDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "DarkHorizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DarkHorizontal, hatchbrush_forecolor, Color.White); break;
+                case "DarkUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DarkUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "DarkVertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DarkVertical, hatchbrush_forecolor, Color.White); break;
+                case "DashedDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DashedDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "DashedHorizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DashedHorizontal, hatchbrush_forecolor, Color.White); break;
+                case "DashedUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DashedUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "DashedVertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DashedVertical, hatchbrush_forecolor, Color.White); break;
+                case "DiagonalBrick": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DiagonalBrick, hatchbrush_forecolor, Color.White); break;
+                case "DiagonalCross": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DiagonalCross, hatchbrush_forecolor, Color.White); break;
+                case "Divot": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Divot, hatchbrush_forecolor, Color.White); break;
+                case "DottedDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DottedDiamond, hatchbrush_forecolor, Color.White); break;
+                case "DottedGrid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DottedGrid, hatchbrush_forecolor, Color.White); break;
+                case "ForwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "Horizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Horizontal, hatchbrush_forecolor, Color.White); break;
+                case "HorizontalBrick": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.HorizontalBrick, hatchbrush_forecolor, Color.White); break;
+                case "LargeCheckerBoard": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LargeCheckerBoard, hatchbrush_forecolor, Color.White); break;
+                case "LargeConfetti": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LargeConfetti, hatchbrush_forecolor, Color.White); break;
+                case "LargeGrid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LargeGrid, hatchbrush_forecolor, Color.White); break;
+                case "LightDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LightDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "LightHorizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LightHorizontal, hatchbrush_forecolor, Color.White); break;
+                case "LightUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LightUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "LightVertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.LightVertical, hatchbrush_forecolor, Color.White); break;
+                case "Max": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Max, hatchbrush_forecolor, Color.White); break;
+                case "Min": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Min, hatchbrush_forecolor, Color.White); break;
+                case "NarrowHorizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal, hatchbrush_forecolor, Color.White); break;
+                case "NarrowVertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.NarrowVertical, hatchbrush_forecolor, Color.White); break;
+                 case "OutlinedDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond, hatchbrush_forecolor, Color.White); break;
+                 case "Percent05": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent05, hatchbrush_forecolor, Color.White); break;
+                 case "Percent10": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent10, hatchbrush_forecolor, Color.White); break;
+                 case "Percent20": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent20, hatchbrush_forecolor, Color.White); break;
+                 case "Percent25": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent25, hatchbrush_forecolor, Color.White); break;
+                 case "Percent30": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent30, hatchbrush_forecolor, Color.White); break;
+                 case "Percent40": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent40, hatchbrush_forecolor, Color.White); break;
+                 case "Percent50": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent50, hatchbrush_forecolor, Color.White); break;
+                 case "Percent60": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent60, hatchbrush_forecolor, Color.White); break;
+                 case "Percent70": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent70, hatchbrush_forecolor, Color.White); break;
+                 case "Percent75": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent75, hatchbrush_forecolor, Color.White); break;
+                 case "Percent80": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent80, hatchbrush_forecolor, Color.White); break;
+                 case "Percent90": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent90, hatchbrush_forecolor, Color.White); break;
+                 case "Plaid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Plaid, hatchbrush_forecolor, Color.White); break;
+                 case "Shingle": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Shingle, hatchbrush_forecolor, Color.White); break;
+                 case "SmallCheckerBoard": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard, hatchbrush_forecolor, Color.White); break;
+                 case "SmallConfetti": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallConfetti, hatchbrush_forecolor, Color.White); break;
+                 case "SmallGrid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallGrid, hatchbrush_forecolor, Color.White); break;
+                 case "SolidDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SolidDiamond, hatchbrush_forecolor, Color.White); break;
+                 case "Sphere": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Sphere, hatchbrush_forecolor, Color.White); break;
+                 case "Trellis": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Trellis, hatchbrush_forecolor, Color.White); break;
+                 case "Vertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Vertical, hatchbrush_forecolor, Color.White); break;
+                 case "Wave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Wave, hatchbrush_forecolor, Color.White); break;
+                 case "Weave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Weave, hatchbrush_forecolor, Color.White); break;
+                 case "WideDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                 case "WideUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                 case "ZigZag": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, hatchbrush_forecolor, Color.White); break;
+            }
+            
+            Render(sender, e);
+        }
 
+        // Set pen color
         private void button1_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog(Form1.ActiveForm);
@@ -219,14 +293,50 @@ namespace WindowsFormsApplication3
             Render(sender, e);
         }
 
+        // Set Brushes color
+        private void button2_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog(Form1.ActiveForm);
+            hatchbrush_forecolor = colorDialog1.Color;
+            solidbrush = new SolidBrush(colorDialog1.Color);
+            button2.BackColor = colorDialog1.Color;
+            Fill_change(sender, e);
+        }
+
+        // Fill List with random points
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FillListView();
+            Render(sender, e);
+        }
+
+        // Fill List with random points
+        private void FillListView()
+        {
+            ListViewItem item;
+            ListViewItem.ListViewSubItem subitem_x, subitem_y;
+            System.Random rnd = new System.Random();
+            int x, y, count;
+            
+            listView1.Items.Clear();
+
+            count = rnd.Next(5, 10);
+
+            for (int i = 0; i < count; i++)
+            {
+                x = rnd.Next(25, panel1.Width - 25);
+                y = rnd.Next(25, panel1.Height - 25);
+                item = listView1.Items.Add(Convert.ToString(listView1.Items.Count + 1));
+                subitem_x = item.SubItems.Add(x.ToString());
+                subitem_y = item.SubItems.Add(y.ToString());
+            }
+        }
 
         private void Render(object sender, EventArgs e)
         {
 
             if (comboBox1.SelectedItem != null)
             {
-                pen_panel.Enabled = true;
-                
                 hwnd.Clear(Color.White);
 
                 switch (comboBox1.SelectedItem.ToString())
@@ -255,10 +365,14 @@ namespace WindowsFormsApplication3
 
         private void MyDrawArc()
         {
+            pen_panel.Enabled = true;
             fill_panel.Enabled = false;
+            point_panel.Enabled = false;
+            listView1.Visible = false;
+            addparam_panel.Enabled = true;
 
-            // Configure additional parameter window, and show it
-            if (!addparam_panel.Enabled)
+            // Configure additional parameter window
+            if (addparam_panel.Tag != "MyDrawArc")
             {
                 numericUpDown_width.Minimum = 10;
                 numericUpDown_width.Maximum = panel1.Width - 3;
@@ -287,9 +401,8 @@ namespace WindowsFormsApplication3
                 numericUpDown_param2.Minimum = 0;
                 numericUpDown_param2.Maximum = 360;                
                 numericUpDown_param2.Value = 270;
-
-                addparam_panel.Enabled = true;
-            }
+           }
+            addparam_panel.Tag = "MyDrawArc";
 
             //setup initial parameter
             int x = (int)numericUpDown_x.Value;
@@ -301,21 +414,35 @@ namespace WindowsFormsApplication3
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
             
             // Draw figure
+
             hwnd.DrawArc(pen, rect, startAngle, sweepAngle);
 
         }
 
         private void MyDrawFillClosedCurve()
         {
+            pen_panel.Enabled = false;
             fill_panel.Enabled = true;
+            point_panel.Enabled = true;
+            listView1.Visible = true;
+            addparam_panel.Enabled = false;
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {   
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            if (hatchbrush != null) hwnd.FillClosedCurve(hatchbrush, points);
+            else hwnd.FillClosedCurve(solidbrush, points);
+
         }
-
-
-
-
-
-
-
 
     }
 }
