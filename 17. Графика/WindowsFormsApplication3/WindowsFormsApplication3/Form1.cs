@@ -11,6 +11,20 @@ namespace WindowsFormsApplication3
 {
     public partial class Form1 : Form
     {
+        struct sPanelsConfig
+        {
+            public const int Reset = 0;
+            public const int ArcGroup = 1;
+            public const int RectangleGroup = 2;
+            public const int LineGroup = 3;
+            public const int FillLineGroup = 4;
+            public const int FillRectangleGroup = 5;
+            public const int FillArcGroup = 6;
+            public int lastMode;
+        }
+        sPanelsConfig panels_config;
+
+
         Graphics hwnd;
         Pen pen = new Pen(Color.Black);
         System.Drawing.SolidBrush solidbrush = new SolidBrush(Color.Black);
@@ -26,38 +40,19 @@ namespace WindowsFormsApplication3
             // Take handle for draw
             hwnd = Graphics.FromHwnd(this.panel1.Handle);
 
-            addparam_panel.Enabled = false;
-            pen_panel.Enabled = false;
-            fill_panel.Enabled = false;
-            point_panel.Enabled = false;
-            listView1.Visible = false;
+            // set up panels
+            PreparePanels(sPanelsConfig.Reset);
+
 
             // fill List View with new random values
             FillListView();
 
             // Fill Comboboxes
 
-
             // FIGURES
-            /*
-            hwnd.DrawArc;
-            hwnd.DrawBezier;
-            hwnd.DrawClosedCurve;
-            hwnd.DrawCurve;
-            hwnd.DrawEllipse;
-            hwnd.DrawLine;
-            hwnd.DrawPie;
-            hwnd.DrawRectangle;
-            hwnd.DrawString;
 
-            hwnd.FillClosedCurve;
-            hwnd.FillRectange;
-            hwnd.FillEllipse;
-            hwnd.FillPie;
-            hwnd.FillPolygon;
-            */
-            string[] items = new string[] { "DrawArc", "DrawBezier", "DrawCurve", "DrawClosedCurve", 
-                                             "DrawEllipse", "DrawLine", "DrawPie", "DrawRectangle", "DrawString",
+            string[] items = new string[] { "DrawArc", "DrawBezier", "DrawBeziers", "DrawCurve", "DrawClosedCurve", 
+                                             "DrawEllipse", "DrawLine", "DrawLines", "DrawPie", "DrawRectangle", 
                                              "FillClosedCurve", "FillRectange", "FillEllipse", "FillPie", "FillPolygon"
             };
 
@@ -66,7 +61,6 @@ namespace WindowsFormsApplication3
 
             
             // STORKE STYLES
-            // pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid
 
             items = new string[] { "Dash", "DashDot", "DashDotDot", "Dot", "Solid" };
             
@@ -77,64 +71,6 @@ namespace WindowsFormsApplication3
             comboBox2.SelectedItem = "Solid";
 
             // FILL STYLES
-            /*
-            System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.Cross;
-            System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.DarkHorizontal;
-            System.Drawing.Drawing2D.HatchStyle.DarkUpwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.DarkVertical;
-            System.Drawing.Drawing2D.HatchStyle.DashedDownwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.DashedHorizontal;
-            System.Drawing.Drawing2D.HatchStyle.DashedUpwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.DashedVertical;
-            System.Drawing.Drawing2D.HatchStyle.DiagonalBrick;
-            System.Drawing.Drawing2D.HatchStyle.DiagonalCross;
-            System.Drawing.Drawing2D.HatchStyle.Divot;
-            System.Drawing.Drawing2D.HatchStyle.DottedDiamond;
-            System.Drawing.Drawing2D.HatchStyle.DottedGrid;
-            System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.Horizontal;
-            System.Drawing.Drawing2D.HatchStyle.HorizontalBrick;
-            System.Drawing.Drawing2D.HatchStyle.LargeCheckerBoard;
-            System.Drawing.Drawing2D.HatchStyle.LargeConfetti;
-            System.Drawing.Drawing2D.HatchStyle.LargeGrid;
-            System.Drawing.Drawing2D.HatchStyle.LightDownwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.LightHorizontal;
-            System.Drawing.Drawing2D.HatchStyle.LightUpwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.LightVertical;
-            System.Drawing.Drawing2D.HatchStyle.Max;
-            System.Drawing.Drawing2D.HatchStyle.Min;
-            System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal;
-            System.Drawing.Drawing2D.HatchStyle.NarrowVertical;
-            System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond;
-            System.Drawing.Drawing2D.HatchStyle.Percent05;
-            System.Drawing.Drawing2D.HatchStyle.Percent10;
-            System.Drawing.Drawing2D.HatchStyle.Percent20;
-            System.Drawing.Drawing2D.HatchStyle.Percent25;
-            System.Drawing.Drawing2D.HatchStyle.Percent30;
-            System.Drawing.Drawing2D.HatchStyle.Percent40;
-            System.Drawing.Drawing2D.HatchStyle.Percent50;
-            System.Drawing.Drawing2D.HatchStyle.Percent60;
-            System.Drawing.Drawing2D.HatchStyle.Percent70;
-            System.Drawing.Drawing2D.HatchStyle.Percent75;
-            System.Drawing.Drawing2D.HatchStyle.Percent80;
-            System.Drawing.Drawing2D.HatchStyle.Percent90;
-            System.Drawing.Drawing2D.HatchStyle.Plaid;
-            System.Drawing.Drawing2D.HatchStyle.Shingle;
-            System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard;
-            System.Drawing.Drawing2D.HatchStyle.SmallConfetti;
-            System.Drawing.Drawing2D.HatchStyle.SmallGrid;
-            System.Drawing.Drawing2D.HatchStyle.SolidDiamond;
-            System.Drawing.Drawing2D.HatchStyle.Sphere;
-            System.Drawing.Drawing2D.HatchStyle.Trellis;
-            System.Drawing.Drawing2D.HatchStyle.Vertical;
-            System.Drawing.Drawing2D.HatchStyle.Wave;
-            System.Drawing.Drawing2D.HatchStyle.Weave;
-            System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal;
-            System.Drawing.Drawing2D.HatchStyle.ZigZag;
-            */
 
             items = new string[] { "Solid Brush",
             "BackwardDiagonal", 
@@ -202,6 +138,7 @@ namespace WindowsFormsApplication3
            
         }
 
+        // Check user selection and make appropriate pen. Function is an event handler.
         private void Pen_change(object sender, EventArgs e)
         {
             pen.Width = (float)numericUpDown1.Value;
@@ -218,6 +155,7 @@ namespace WindowsFormsApplication3
             Render(sender, e);
         }
 
+        // Check user selection and make appropriate hatchbrush. Function is an event handler.
         private void Fill_change(object sender, EventArgs e)
         {
             switch (comboBox4.SelectedItem.ToString())
@@ -252,39 +190,39 @@ namespace WindowsFormsApplication3
                 case "Min": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Min, hatchbrush_forecolor, Color.White); break;
                 case "NarrowHorizontal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.NarrowHorizontal, hatchbrush_forecolor, Color.White); break;
                 case "NarrowVertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.NarrowVertical, hatchbrush_forecolor, Color.White); break;
-                 case "OutlinedDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond, hatchbrush_forecolor, Color.White); break;
-                 case "Percent05": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent05, hatchbrush_forecolor, Color.White); break;
-                 case "Percent10": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent10, hatchbrush_forecolor, Color.White); break;
-                 case "Percent20": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent20, hatchbrush_forecolor, Color.White); break;
-                 case "Percent25": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent25, hatchbrush_forecolor, Color.White); break;
-                 case "Percent30": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent30, hatchbrush_forecolor, Color.White); break;
-                 case "Percent40": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent40, hatchbrush_forecolor, Color.White); break;
-                 case "Percent50": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent50, hatchbrush_forecolor, Color.White); break;
-                 case "Percent60": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent60, hatchbrush_forecolor, Color.White); break;
-                 case "Percent70": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent70, hatchbrush_forecolor, Color.White); break;
-                 case "Percent75": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent75, hatchbrush_forecolor, Color.White); break;
-                 case "Percent80": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent80, hatchbrush_forecolor, Color.White); break;
-                 case "Percent90": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent90, hatchbrush_forecolor, Color.White); break;
-                 case "Plaid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Plaid, hatchbrush_forecolor, Color.White); break;
-                 case "Shingle": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Shingle, hatchbrush_forecolor, Color.White); break;
-                 case "SmallCheckerBoard": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard, hatchbrush_forecolor, Color.White); break;
-                 case "SmallConfetti": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallConfetti, hatchbrush_forecolor, Color.White); break;
-                 case "SmallGrid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallGrid, hatchbrush_forecolor, Color.White); break;
-                 case "SolidDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SolidDiamond, hatchbrush_forecolor, Color.White); break;
-                 case "Sphere": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Sphere, hatchbrush_forecolor, Color.White); break;
-                 case "Trellis": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Trellis, hatchbrush_forecolor, Color.White); break;
-                 case "Vertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Vertical, hatchbrush_forecolor, Color.White); break;
-                 case "Wave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Wave, hatchbrush_forecolor, Color.White); break;
-                 case "Weave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Weave, hatchbrush_forecolor, Color.White); break;
-                 case "WideDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
-                 case "WideUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
-                 case "ZigZag": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, hatchbrush_forecolor, Color.White); break;
+                case "OutlinedDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.OutlinedDiamond, hatchbrush_forecolor, Color.White); break;
+                case "Percent05": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent05, hatchbrush_forecolor, Color.White); break;
+                case "Percent10": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent10, hatchbrush_forecolor, Color.White); break;
+                case "Percent20": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent20, hatchbrush_forecolor, Color.White); break;
+                case "Percent25": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent25, hatchbrush_forecolor, Color.White); break;
+                case "Percent30": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent30, hatchbrush_forecolor, Color.White); break;
+                case "Percent40": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent40, hatchbrush_forecolor, Color.White); break;
+                case "Percent50": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent50, hatchbrush_forecolor, Color.White); break;
+                case "Percent60": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent60, hatchbrush_forecolor, Color.White); break;
+                case "Percent70": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent70, hatchbrush_forecolor, Color.White); break;
+                case "Percent75": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent75, hatchbrush_forecolor, Color.White); break;
+                case "Percent80": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent80, hatchbrush_forecolor, Color.White); break;
+                case "Percent90": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Percent90, hatchbrush_forecolor, Color.White); break;
+                case "Plaid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Plaid, hatchbrush_forecolor, Color.White); break;
+                case "Shingle": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Shingle, hatchbrush_forecolor, Color.White); break;
+                case "SmallCheckerBoard": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallCheckerBoard, hatchbrush_forecolor, Color.White); break;
+                case "SmallConfetti": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallConfetti, hatchbrush_forecolor, Color.White); break;
+                case "SmallGrid": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SmallGrid, hatchbrush_forecolor, Color.White); break;
+                case "SolidDiamond": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.SolidDiamond, hatchbrush_forecolor, Color.White); break;
+                case "Sphere": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Sphere, hatchbrush_forecolor, Color.White); break;
+                case "Trellis": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Trellis, hatchbrush_forecolor, Color.White); break;
+                case "Vertical": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Vertical, hatchbrush_forecolor, Color.White); break;
+                case "Wave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Wave, hatchbrush_forecolor, Color.White); break;
+                case "Weave": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.Weave, hatchbrush_forecolor, Color.White); break;
+                case "WideDownwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideDownwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "WideUpwardDiagonal": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.WideUpwardDiagonal, hatchbrush_forecolor, Color.White); break;
+                case "ZigZag": hatchbrush = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ZigZag, hatchbrush_forecolor, Color.White); break;
             }
             
             Render(sender, e);
         }
 
-        // Set pen color
+        // Set pen color.
         private void button1_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog(Form1.ActiveForm);
@@ -320,7 +258,7 @@ namespace WindowsFormsApplication3
             
             listView1.Items.Clear();
 
-            count = rnd.Next(5, 10);
+            count = 10;//rnd.Next(5, 10);
 
             for (int i = 0; i < count; i++)
             {
@@ -332,6 +270,7 @@ namespace WindowsFormsApplication3
             }
         }
 
+        // Check user selection and call the appropriate function for drawing
         private void Render(object sender, EventArgs e)
         {
 
@@ -342,67 +281,182 @@ namespace WindowsFormsApplication3
                 switch (comboBox1.SelectedItem.ToString())
                 {
                     case "DrawArc": MyDrawArc(); break;
-                    case "DrawBezier": break;
-                    case "DrawClosedCurve": break;
-                    case "DrawCurve": break;
-                    case "DrawEllipse": break;
-                    case "DrawLine": break;
-                    case "DrawPie": break;
-                    case "DrawRectangle": break;
-                    case "DrawString": break;
+                    case "DrawBezier": MyDrawBezier(); break;
+                    case "DrawBeziers": MyDrawBeziers(); break;
+                    case "DrawClosedCurve": MyDrawClosedCurve(); break;
+                    case "DrawCurve": MyDrawCurve();  break;
+                    case "DrawEllipse": MyDrawEllipse(); break;
+                    case "DrawLine": MyDrawLine(); break;
+                    case "DrawLines": MyDrawLines(); break;
+                    case "DrawPie": MyDrawPie(); break;
+                    case "DrawRectangle": MyDrawRectangle(); break;
 
                     case "FillClosedCurve": MyDrawFillClosedCurve();  break;
-                    case "FillRectange": break;
-                    case "FillEllipse": break;
-                    case "FillPie": break;
-                    case "FillPolygon": break;
+                    case "FillRectange": MyDrawFillRectangle(); break;
+                    case "FillEllipse": MyDrawFillEllipse(); break;
+                    case "FillPie": MyFillPie(); break;
+                    case "FillPolygon": MyFillPolygon(); break;
 
                     default: break;
                 }
             }
         }
 
+        // Prepare the settings panel for shapes
+        public void PreparePanels(int config)
+        {
+            switch (config)
+            {
+                case sPanelsConfig.Reset:
+                    {
+                        addparam_panel.Enabled = false;
+                        pen_panel.Enabled = false;
+                        fill_panel.Enabled = false;
+                        point_panel.Enabled = false;
+                        listView1.Visible = false;
+
+                        numericUpDown_width.Minimum = 10;
+                        numericUpDown_width.Maximum = panel1.Width - 3;
+                        numericUpDown_width.Value = (decimal)panel1.Width / 2;
+
+                        numericUpDown_height.Minimum = 10;
+                        numericUpDown_height.Maximum = panel1.Height - 3;
+                        numericUpDown_height.Value = (decimal)panel1.Height / 2;
+
+                        numericUpDown_x.Minimum = 0;
+                        numericUpDown_x.Maximum = panel1.Width - 10;
+                        numericUpDown_x.Value = (decimal)panel1.Width / 4;
+
+                        numericUpDown_y.Minimum = 0;
+                        numericUpDown_y.Maximum = panel1.Height - 10;
+                        numericUpDown_y.Value = (decimal)panel1.Height / 4;
+
+                        label_param1.Text = "param1:";
+                        label_param1.Enabled = true;
+                        numericUpDown_param1.Enabled = true;
+                        numericUpDown_param1.Minimum = 0;
+                        numericUpDown_param1.Maximum = 360;
+                        numericUpDown_param1.Value = 0;
+
+                        label_param2.Text = "param2:";
+                        label_param2.Enabled = true;
+                        numericUpDown_param2.Enabled = true;
+                        numericUpDown_param2.Minimum = 0;
+                        numericUpDown_param2.Maximum = 360;
+                        numericUpDown_param2.Value = 270;
+
+                        break;
+                    }
+                case sPanelsConfig.ArcGroup:
+                    {
+                        pen_panel.Enabled = true;
+                        fill_panel.Enabled = false;
+                        point_panel.Enabled = false;
+                        listView1.Visible = false;
+                        addparam_panel.Enabled = true;
+
+                        // Configure additional parameter window
+                        if (config != panels_config.lastMode)
+                        {
+                            panels_config.lastMode = config;
+                            label_param1.Text = "start angle:";
+                            label_param1.Enabled = true;
+                            label_param2.Text = "sweep angle:";
+                            label_param2.Enabled = true;
+                            numericUpDown_param2.Enabled = true;
+                        }
+                        break;
+                    }
+                case sPanelsConfig.RectangleGroup:
+                    {
+                        pen_panel.Enabled = true;
+                        fill_panel.Enabled = false;
+                        point_panel.Enabled = false;
+                        listView1.Visible = false;
+                        addparam_panel.Enabled = true;
+
+                        // Configure additional parameter window
+                        if (config != panels_config.lastMode)
+                        {
+                            panels_config.lastMode = config;
+                            label_param1.Text = "param1:";
+                            label_param1.Enabled = false;
+                            numericUpDown_param1.Enabled = false;
+                            label_param2.Text = "param2:";
+                            label_param2.Enabled = false;
+                            numericUpDown_param2.Enabled = false;
+                        }
+                        break;
+                    }
+                case sPanelsConfig.LineGroup:
+                    {
+                        pen_panel.Enabled = true;
+                        fill_panel.Enabled = false;
+                        point_panel.Enabled = true;
+                        listView1.Visible = true;
+                        addparam_panel.Enabled = false;
+                        break;
+                    }
+                case sPanelsConfig.FillLineGroup:
+                    {
+                        pen_panel.Enabled = false;
+                        fill_panel.Enabled = true;
+                        point_panel.Enabled = true;
+                        listView1.Visible = true;
+                        addparam_panel.Enabled = false;
+                        break;
+                    }
+                case sPanelsConfig.FillRectangleGroup:
+                    {
+                        pen_panel.Enabled = false;
+                        fill_panel.Enabled = true;
+                        point_panel.Enabled = false;
+                        listView1.Visible = false;
+                        addparam_panel.Enabled = true;
+                        
+                        // Configure additional parameter window
+                        if (config != panels_config.lastMode)
+                        {
+                            panels_config.lastMode = config;
+                            label_param1.Text = "param1:";
+                            label_param1.Enabled = false;
+                            numericUpDown_param1.Enabled = false;
+                            label_param2.Text = "param2:";
+                            label_param2.Enabled = false;
+                            numericUpDown_param2.Enabled = false;
+                        }
+                        break;
+                    }
+                case sPanelsConfig.FillArcGroup:
+                    {
+                        pen_panel.Enabled = false;
+                        fill_panel.Enabled = true;
+                        point_panel.Enabled = false;
+                        listView1.Visible = false;
+                        addparam_panel.Enabled = true;
+
+                        // Configure additional parameter window
+                        if (config != panels_config.lastMode)
+                        {
+                            panels_config.lastMode = config;
+                            label_param1.Text = "start angle:";
+                            label_param1.Enabled = true;
+                            numericUpDown_param1.Enabled = true;
+                            label_param2.Text = "sweep angle:";
+                            label_param2.Enabled = true;
+                            numericUpDown_param2.Enabled = true;
+                        }
+                        break;
+                    }
+            }
+        }
+
+        // DRAW FIGURES
 
         private void MyDrawArc()
         {
-            pen_panel.Enabled = true;
-            fill_panel.Enabled = false;
-            point_panel.Enabled = false;
-            listView1.Visible = false;
-            addparam_panel.Enabled = true;
-
-            // Configure additional parameter window
-            if (addparam_panel.Tag != "MyDrawArc")
-            {
-                numericUpDown_width.Minimum = 10;
-                numericUpDown_width.Maximum = panel1.Width - 3;
-                numericUpDown_width.Value = (decimal)panel1.Width / 2;
-                
-                numericUpDown_height.Minimum = 10;
-                numericUpDown_height.Maximum = panel1.Height - 3;
-                numericUpDown_height.Value = (decimal)panel1.Height / 2;                
-                
-                numericUpDown_x.Minimum = 0;
-                numericUpDown_x.Maximum = panel1.Width - 10; 
-                numericUpDown_x.Value = (decimal)panel1.Width / 4;
-
-                numericUpDown_y.Minimum = 0;
-                numericUpDown_y.Maximum = panel1.Height - 10;
-                numericUpDown_y.Value = (decimal)panel1.Height / 4;
-                
-
-                label_param1.Text = "start angle:";
-                numericUpDown_param1.Minimum = 0;
-                numericUpDown_param1.Maximum = 360;                
-                numericUpDown_param1.Value = 0;
-
-
-                label_param2.Text = "sweep angle:";
-                numericUpDown_param2.Minimum = 0;
-                numericUpDown_param2.Maximum = 360;                
-                numericUpDown_param2.Value = 270;
-           }
-            addparam_panel.Tag = "MyDrawArc";
+            // Prepare the settings panel for shapes
+            PreparePanels(sPanelsConfig.ArcGroup);
 
             //setup initial parameter
             int x = (int)numericUpDown_x.Value;
@@ -419,13 +473,188 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void MyDrawBezier()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawBezier(pen, points[0], points[1], points[2], points[3]);
+        }
+
+        // not work yet
+        private void MyDrawBeziers()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+            
+            /* WORKED CODE
+            System.Random rnd = new System.Random();
+
+            int count = 40;
+
+            Point[] points = new Point[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                points[i].X = rnd.Next(25, panel1.Width - 25);
+                points[i].Y = rnd.Next(25, panel1.Height - 25);
+            }            
+            */
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawBeziers(pen, points);
+        }
+
+        private void MyDrawCurve()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawCurve(pen, points);
+        }
+
+        private void MyDrawClosedCurve()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawClosedCurve(pen, points);
+        }
+
+        private void MyDrawEllipse()
+        {
+            PreparePanels(sPanelsConfig.RectangleGroup);
+
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+
+            hwnd.DrawEllipse(pen, rect);
+        }
+
+        private void MyDrawLine()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawLine(pen, points[0], points[1]);
+        }
+
+        private void MyDrawLines()
+        {
+            PreparePanels(sPanelsConfig.LineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            hwnd.DrawLines(pen, points);
+        }
+
+        private void MyDrawPie()
+        {
+            // Prepare the settings panel for shapes
+            PreparePanels(sPanelsConfig.ArcGroup);
+
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            float startAngle = (float)numericUpDown_param1.Value;
+            float sweepAngle = (float)numericUpDown_param2.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+
+            hwnd.DrawPie(pen, rect, startAngle, sweepAngle);
+        }
+
+        private void MyDrawRectangle()
+        {
+            PreparePanels(sPanelsConfig.RectangleGroup);
+
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+
+            hwnd.DrawRectangle(pen, rect);
+        }
+
         private void MyDrawFillClosedCurve()
         {
-            pen_panel.Enabled = false;
-            fill_panel.Enabled = true;
-            point_panel.Enabled = true;
-            listView1.Visible = true;
-            addparam_panel.Enabled = false;
+            PreparePanels(sPanelsConfig.FillLineGroup);
 
             int count = listView1.Items.Count;
 
@@ -444,5 +673,76 @@ namespace WindowsFormsApplication3
 
         }
 
+        private void MyDrawFillRectangle()
+        {
+            PreparePanels(sPanelsConfig.FillRectangleGroup);
+
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+            if (hatchbrush != null) hwnd.FillRectangle(hatchbrush, rect);
+            else hwnd.FillRectangle(solidbrush, rect);
+        }
+
+        private void MyDrawFillEllipse()
+        {
+            PreparePanels(sPanelsConfig.FillRectangleGroup);
+            
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+            if (hatchbrush != null) hwnd.FillEllipse(hatchbrush, rect);
+            else hwnd.FillEllipse(solidbrush, rect);
+        }
+
+        private void MyFillPie()
+        {
+            PreparePanels(sPanelsConfig.FillArcGroup);
+
+            //setup initial parameter
+            int x = (int)numericUpDown_x.Value;
+            int y = (int)numericUpDown_y.Value;
+            int width = (int)numericUpDown_width.Value;
+            int height = (int)numericUpDown_height.Value;
+            float startAngle = (float)numericUpDown_param1.Value;
+            float sweepAngle = (float)numericUpDown_param2.Value;
+            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(x, y, width, height);
+
+            // Draw figure
+            if (hatchbrush != null) hwnd.FillPie(hatchbrush, rect, startAngle, sweepAngle);
+            else hwnd.FillPie(solidbrush, rect, startAngle, sweepAngle);
+        }
+
+        private void MyFillPolygon()
+        {
+            PreparePanels(sPanelsConfig.FillLineGroup);
+
+            int count = listView1.Items.Count;
+
+            Point[] points = new Point[count];
+
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                points[i].X = Convert.ToInt32(item.SubItems[1].Text);
+                points[i].Y = Convert.ToInt32(item.SubItems[2].Text);
+                i++;
+            }
+
+            // Draw figure
+            if (hatchbrush != null) hwnd.FillPolygon(hatchbrush, points);
+            else hwnd.FillPolygon(solidbrush, points);
+
+        }
     }
 }
