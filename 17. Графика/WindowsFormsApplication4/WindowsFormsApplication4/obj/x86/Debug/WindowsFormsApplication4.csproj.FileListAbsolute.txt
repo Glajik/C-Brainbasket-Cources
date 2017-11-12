@@ -1,0 +1,7 @@
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.Form1.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.Properties.Resources.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.csproj.GenerateResource.Cache
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\bin\Debug\WindowsFormsApplication4.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.pdb
