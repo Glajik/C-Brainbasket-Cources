@@ -115,7 +115,8 @@
             "JPEG",
             "PNG",
             "GIF",
-            "TIFF"});
+            "TIFF",
+            "BMP"});
             this.comboBox1.Location = new System.Drawing.Point(460, 476);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(106, 21);
