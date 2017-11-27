@@ -5,3 +5,4 @@ C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\18. Graphics
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\18. Graphics Animation\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\18. Graphics Animation\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\18. Graphics Animation\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\18. Graphics Animation\WindowsFormsApplication1\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
