@@ -8,3 +8,6 @@ C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\Fi
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\obj\x86\Debug\FitnessCRM.pdb
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\bin\Debug\Customers.sdf
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\obj\x86\Debug\FitnessCRM.csprojResolveAssemblyReference.cache
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\obj\x86\Debug\FitnessCRM.Form3.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\obj\x86\Debug\FitnessCRM.Form4.resources
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\19. Final\FitnessCRM\FitnessCRM\obj\x86\Debug\FitnessCRM.Form5.resources

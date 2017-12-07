@@ -5,3 +5,5 @@ C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Граф
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication3\WindowsFormsApplication3\obj\x86\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication3\WindowsFormsApplication3\obj\x86\Debug\WindowsFormsApplication3.exe
 C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Графика\WindowsFormsApplication3\WindowsFormsApplication3\obj\x86\Debug\WindowsFormsApplication3.pdb
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Graphics\WindowsFormsApplication3\WindowsFormsApplication3\obj\x86\Debug\WindowsFormsApplication3.exe
+C:\Users\Slava\Documents\Visual Studio 2010\Projects\Slavik_GL\Code\17. Graphics\WindowsFormsApplication3\WindowsFormsApplication3\obj\x86\Debug\WindowsFormsApplication3.pdb
